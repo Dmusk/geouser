@@ -109,7 +109,7 @@ const Map = ({ user }: Props) => {
         if (user?.address) {
             fetchUserLocation(user.address);
         }
-    }, [user, mapboxToken]);
+    }, [user, mapboxToken, viewport]);
 
     useEffect(() => {
         const map = new mapboxgl.Map({
@@ -128,7 +128,7 @@ const Map = ({ user }: Props) => {
                 longitude: lng
             });
         });
-    }, [lng, lat, setViewport]);
+    }, [lng, lat, viewport]);
 
     useEffect(() => {
         if (lat !== 0 && lng !== 0) {
@@ -138,7 +138,7 @@ const Map = ({ user }: Props) => {
                 longitude: lng
             });
         }
-    }, [lat, lng, setViewport]);
+    }, [lat, lng, viewport]);
 
     return (
         <div className='inset-0 absolute w-full min-h-[450px] h-full' ref={mapContainerRef}>
